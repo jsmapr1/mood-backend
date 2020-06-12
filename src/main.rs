@@ -1,16 +1,14 @@
-use std::env;
+//use std::env;
+use actix_web::{App, HttpServer };
+mod employees;
 
-struct Mood<'a>{
-    activity: &'a str,
-    rating: &'a str,
+#[actix_rt::main]
+async fn main() -> std::io::Result<()> {
+    HttpServer::new(|| {
+        App::new().configure(employees::init_routes)
+    })
+    .bind("127.0.0.1:8088")?
+    .run()
+    .await
 }
-fn main() {
-    let args: Vec<String> = env::args().collect();
 
-    let mood: Mood = Mood { activity: &args[1], rating: &args[2]};
-    //let activity = &args[1];
-    //let rating = &args[2];
-
-    println!("You are doing {}", mood.activity);
-    println!("And feel {}", mood.rating);
-}
