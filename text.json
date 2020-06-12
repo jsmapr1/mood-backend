@@ -1,0 +1,8 @@
+[{
+    "id": 1,
+    "first_name" : "Ola",
+    "last_name": "John Ajiboye",
+    "department": "Engineering",
+    "salary": 4500,
+    "age": 23
+}]
