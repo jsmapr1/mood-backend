@@ -30,6 +30,7 @@ RUN groupadd $APP_USER \
     && mkdir -p ${APP}
 
 COPY --from=builder /mood-backend/target/release/mood-backend ${APP}/mood-backend
+COPY --from=builder /mood-backend/text.json ${APP}/text.json
 
 RUN chown -R $APP_USER:$APP_USER ${APP}
 
